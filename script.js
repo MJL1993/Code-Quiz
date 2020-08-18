@@ -37,7 +37,7 @@ var questions = [
     correctAnswer: "B"
   }]; 
 
-// create a score variable
+// start game with score of 0
 var score = 0
 
 // create a time variable
@@ -49,34 +49,68 @@ let questionIndex = 0
 // create start button
 var startBtn = $("#start");
 
+// display inital question
+var displayQuestion = function() {
+    $(".card-title").append(questions[0].question);
+  }  
+
 // listen for click event on start button
 $(startBtn).on("click", function() {
-
-  var displayQuestion = function() {
-    $(".card-title").append(questions[0].question);
-    $(".card-text").append(questions[0].answers)
-  }
-// load first question/answer options into html
-displayQuestion();
-console.log(displayQuestion);
+  displayQuestion();
+  $(startBtn).remove();
 });
 
-
-
-
-
 // create timer functionality
-function timer() {
-  setInterval(function() {
-    
+var timeEl = $(".time");
+var secondsLeft = 30;
+
+function setTime() {
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft;
+
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+      sendMessage();
+    }
+
   }, 1000);
 }
+function sendMessage() {
+  timeEl.textContent = "Time's up!";
+}
+setTime();
 
 // each question needs answer buttons with an event listener
-// when a user answers a question we need analyze the data associated with clicked button which contains the answer they choose
-// if the answer choosen is equal to the correct answer
+var answersList = [];
+//answersList = document.getElementsByTagName("li");
+
+var answersContainer = $(".card-text");
+
+var answer1 = document.createElement("li");
+var answer2 = document.createElement("li");
+var answer3 = document.createElement("li");
+var answer4 = document.createElement("li");
+
+answer1.textContent = "";
+answer2.textContent = "";
+answer3.textContent = "";
+answer4.textContent = "";
+
+answersList.appendChild(answer1);
+answersList.appendChild(answer2);
+answersList.appendChild(answer3);
+answersList.appendChild(answer4);
+
+$(answerABtn).on("click", function(){});
+$(answerBBtn).on("click", function(){});
+$(answerCBtn).on("click", function(){});
+$(answerDBtn).on("click", function(){});
+
+// when a user answers a question we need to analyze the data associated with clicked button which contains the answer they choose
+// if the answer chosen is equal to the correct answer
 // increase score
-// if the answer choosen is incorrect
+// if the answer chosen is incorrect
 // substract time
 // regardless of if the answer is right or wrong we need to load the next question
 // if time is 0 end game and if questionIndex is longer than the array end game
@@ -86,34 +120,16 @@ function timer() {
 // you use a js prompt to ask initials
 
 
-questionObjectArray = [
-  {
-    question: "hi",
-    answer: "123",
 
-},
-]
+// example code
+//questionObjectArray = [
+  //{
+   // question: "hi",
+   // answer: "123",
 
-let data = "question"
+//},
+//]
 
-questionObjectArray[0][data]
+//let data = "question"
 
-
-
-//////////////////////////
-// var currentQuestion = 0;
-// var correctAnswers = 0;
-// var quizComplete = false;
-
-// Quiz functionality
-// $(document).ready(function () {
-
-//Display inital question
-// displayCurrentQuestion();
-//    $(this).find(".#question").hide();
-
-//Display next question
-// $("#next").on("click", function() {
-    // quiz.fadeOut(function() {
-    //   $('#question').remove();
-    // });
+//questionObjectArray[0][data]
