@@ -1,7 +1,7 @@
 // Establish Questions/Answers
 var questions = [
 
-  //question 1 object
+  //question 1 object (index[0])
   {
     question: "Which of the following is a correct jQuery alternative to .addEventListener?",
     answers: {
@@ -13,7 +13,7 @@ var questions = [
     correctAnswer: "A"
   }, 
 
-  //question 2 object
+  //question 2 object (index[1])
   {
     question: "What is 'var' short for?",
     answers: {
@@ -25,7 +25,7 @@ var questions = [
     correctAnswer: "D"
   }, 
 
-  //question 3 object
+  //question 3 object (index[2])
   {
     question: "How does a coder check their code without showing it on the page?",
     answers: {
@@ -37,52 +37,83 @@ var questions = [
     correctAnswer: "B"
   }]; 
 
+// create a score variable
+var score = 0
 
-var currentQuestion = 0;
-var correctAnswers = 0;
-var quizComplete = false;
+// create a time variable
+var time = 0
 
-//Quiz functionality
-$(document).ready(function () {
+// create a questionIndex variable to know what question we are on 
+let questionIndex = 0
 
-//Display inital question
-displayCurrentQuestion();
-$(this).find(".#question").hide();
+// create start button
+var startBtn = $("#start");
 
-//Display next question
-$("#next").on("click", function() {
-    quiz.fadeOut(function() {
-      $('#question').remove();
-    });
+// listen for click event on start button
+$(startBtn).on("click", function() {
+
+  var displayQuestion = function() {
+    $(".card-title").append(questions[0].question);
+    $(".card-text").append(questions[0].answers)
+  }
+// load first question/answer options into html
+displayQuestion();
+console.log(displayQuestion);
+});
 
 
-//Display current question and options
-function createQuestionElement(index) {
-  var questionEl = $('<div>', {
-    id: 'question'
-  });
-  var header = $('<h2>Question ' + (index + 1) + ':</h2>');
-  questionEl.append(header);
 
-  var question = $('<p>').append(questions[index].question);
-  questionEl.append(question);
 
-  var radioButtons = createRadios(index);
-  questionEl.append(radioButtons);
 
-  return questionEl;
+// create timer functionality
+function timer() {
+  setInterval(function() {
+    
+  }, 1000);
 }
 
-for (var i = 0; i < questions.length)
-  h5El.textContent = questions[i];
-  answerA.innerHTML = questions[i].answers[0];
-  answerB.innerHTML = questions[i].answers[1];
-  answerC.innerHTML = questions[i].answers[2];
-  answerD.innerHTML = questions[i].answers[3];
+// each question needs answer buttons with an event listener
+// when a user answers a question we need analyze the data associated with clicked button which contains the answer they choose
+// if the answer choosen is equal to the correct answer
+// increase score
+// if the answer choosen is incorrect
+// substract time
+// regardless of if the answer is right or wrong we need to load the next question
+// if time is 0 end game and if questionIndex is longer than the array end game
+// otherwise 
+// increase the question index and load the next question based on the updated index
 
-  quiz.appendChild(h5El);
-  quiz.appendChild(answerA);
-  quiz.appendChild(answerB);
-  quiz.appendChild(answerC);
-  quiz.appendChild(answerD);
-};
+// you use a js prompt to ask initials
+
+
+questionObjectArray = [
+  {
+    question: "hi",
+    answer: "123",
+
+},
+]
+
+let data = "question"
+
+questionObjectArray[0][data]
+
+
+
+//////////////////////////
+// var currentQuestion = 0;
+// var correctAnswers = 0;
+// var quizComplete = false;
+
+// Quiz functionality
+// $(document).ready(function () {
+
+//Display inital question
+// displayCurrentQuestion();
+//    $(this).find(".#question").hide();
+
+//Display next question
+// $("#next").on("click", function() {
+    // quiz.fadeOut(function() {
+    //   $('#question').remove();
+    // });
