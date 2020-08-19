@@ -44,7 +44,7 @@ var score = 0
 var time = 0
 
 // create a questionIndex variable to know what question we are on 
-let questionsIndex = 0
+var questionsIndex = 0
 
 // create start button
 var startBtn = $("#start");
@@ -75,7 +75,7 @@ var displayQuestion = function(index) {
 // regardless of if the answer is right or wrong we need to load the next question
 
 function chooseAnswer (index) {
-  if (index === currentQuestion.correctAnswer) {
+  if (index === questionsIndex.correctAnswer) {
     //correct answer
     alert("correct");
     $(".card-title").empty();
