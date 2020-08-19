@@ -80,6 +80,7 @@ function chooseAnswer (index) {
     alert("correct");
     $(".card-title").empty();
     $(".options").empty();
+    // increase the question index and load the next question based on the updated index
     questionsIndex++;
     displayQuestion(questionsIndex);
     //increment score counter
@@ -91,17 +92,17 @@ function chooseAnswer (index) {
 }
 
 $(".score").html(score);
-displayQuestion();
+$(".timer").html(time);
+displayQuestion(0);
 
 // Timer functionality
 setInterval(function() {
   time -= 1;
-  $(".timer").html(timer);
+  $(".timer").html(time);
 }, 1000);
 
 
-
 // if time is 0 end game and if questionIndex is longer than the array end game
-// otherwise 
-// increase the question index and load the next question based on the updated index
+
+
 // you use a js prompt to ask initials
